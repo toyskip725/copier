@@ -1,7 +1,7 @@
 body {
   width: 360px;
-  padding: 0px;
-  margin: 0px;
+  padding: 0em;
+  margin: 0.5em;
 }
 
 h1 {
@@ -15,7 +15,7 @@ p {
 }
 
 .tabinfo-wrapper {
-  padding: 1em;
+  padding: 0.5em 1.5em;
   display: flex;
   align-items: center;
 }
@@ -32,6 +32,7 @@ p {
 
 .button-wrapper {
   text-align: right;
+  padding: 0.5em 1.5em;
 }
 .copy-button {
   background: none;
@@ -40,7 +41,6 @@ p {
   border: 1px solid #2f3b4b;
   border-radius: 5px;
   padding: 0.5em 1em;
-  margin: 1em;
 }
 .copy-button:hover {
   color: #ffffff;
