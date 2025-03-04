@@ -1,20 +1,48 @@
 body {
-  width: 240px;
+  width: 360px;
+  padding: 0px;
+  margin: 0px;
 }
 
 h1 {
   font-weight: normal;
 }
 
-.button-wrapper {
+p {
+  color: #24292e;
+  overflow-wrap: break-word;
+  margin: 0.25em 1em;
+}
+
+.tabinfo-wrapper {
+  padding: 1em;
   display: flex;
+  align-items: center;
+}
+
+.tabinfo {
+  line-break: anywhere;
+}
+
+.icon {
+  width: 32px;
+  height: 32px;
+  padding: 0.5em;
+}
+
+.button-wrapper {
+  text-align: right;
 }
 .copy-button {
   background: none;
-  font-size: medium;
-  border: none;
-  padding: 0.5em;
+  font-size: small;
+  color: #2f3b4b;;
+  border: 1px solid #2f3b4b;
+  border-radius: 5px;
+  padding: 0.5em 1em;
+  margin: 1em;
 }
 .copy-button:hover {
-  background-color: aqua;
+  color: #ffffff;
+  background-color: #2f3b4b;
 }

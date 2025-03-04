@@ -45,6 +45,21 @@ const copy = async (type) => {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
+  // update title / URL
+  getCurrentTab()
+    .then((tab) => {
+      const title = document.getElementById("current-tab-title");
+      const url = document.getElementById("current-tab-url");
+      const img = document.getElementById("current-tab-icon");
+      title.innerText = tab.title;
+      url.innerText = tab.url;
+      img.src = tab.favIconUrl;
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+
+  // add EventLister to copy button
   const button = document.getElementById("copy-button/markdown");
   button.addEventListener("click", () => copy("markdown"));
 });
