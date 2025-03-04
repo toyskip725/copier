@@ -19,11 +19,9 @@ p {
   display: flex;
   align-items: center;
 }
-
 .tabinfo {
   line-break: anywhere;
 }
-
 .icon {
   width: 32px;
   height: 32px;
@@ -41,8 +39,17 @@ p {
   border: 1px solid #2f3b4b;
   border-radius: 5px;
   padding: 0.5em 1em;
+  display: inline-flex;
+  align-items: center;
 }
 .copy-button:hover {
   color: #ffffff;
   background-color: #2f3b4b;
+}
+.button-icon {
+  transform: scale(0.9);
+  margin-right: 0.25em;
+}
+.button-text {
+  margin-right: 0.5em;
 }

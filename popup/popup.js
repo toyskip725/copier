@@ -41,7 +41,15 @@ const copy = async (type) => {
   const tab = await getCurrentTab();
   const text = currentTabInfo(tab.title, tab.url).format(type);
 
-  return await updateClipboard(text);
+  const completed = await updateClipboard(text);
+  if (!completed) {
+    return;
+  }
+
+  const buttonText = document.getElementById("copy-button-text");
+  const buttonIcon = document.getElementById("copy-button-icon");
+  buttonText.innerText = "copied";
+  buttonIcon.innerText = "check_circle";
 };
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -60,6 +68,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
   // add EventLister to copy button
-  const button = document.getElementById("copy-button/markdown");
+  const button = document.getElementById("copy-button");
   button.addEventListener("click", () => copy("markdown"));
 });
