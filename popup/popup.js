@@ -37,7 +37,7 @@ const updateClipboard = async (newClip) => {
   }
 };
 
-const copy = async (type) => {
+const handleClick = async (type) => {
   const tab = await getCurrentTab();
   const text = currentTabInfo(tab.title, tab.url).format(type);
 
@@ -50,6 +50,11 @@ const copy = async (type) => {
   const buttonIcon = document.getElementById("copy-button-icon");
   buttonText.innerText = "copied";
   buttonIcon.innerText = "check_circle";
+  
+  setTimeout(() => {
+    buttonText.innerText = "markdown style";
+    buttonIcon.innerText = "content_copy";
+  }, 3000);
 };
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -69,5 +74,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // add EventLister to copy button
   const button = document.getElementById("copy-button");
-  button.addEventListener("click", () => copy("markdown"));
+  button.addEventListener("click", () => handleClick("markdown"));
 });
