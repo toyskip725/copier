@@ -1,6 +1,8 @@
 const currentTabInfo = (title, url) => {
   const format = (type) => {
     switch(type) {
+      case "plaintext":
+        return `${title} ${url}`;
       case "markdown":
         return `[${title}](${url})`;
       default:
@@ -37,24 +39,26 @@ const updateClipboard = async (newClip) => {
   }
 };
 
+const updateButtonView = (type) => {
+  const buttonText = document.getElementById(`copy-button-${type}-text`);
+  const buttonIcon = document.getElementById(`copy-button-${type}-icon`);
+  buttonText.innerText = "copied";
+  buttonIcon.innerText = "check_circle";
+  
+  setTimeout(() => {
+    buttonText.innerText = type === "plaintext" ? "plain text" : "markdown";
+    buttonIcon.innerText = "content_copy";
+  }, 3000);
+};
+
 const handleClick = async (type) => {
   const tab = await getCurrentTab();
   const text = currentTabInfo(tab.title, tab.url).format(type);
 
   const completed = await updateClipboard(text);
-  if (!completed) {
-    return;
+  if (completed) {
+    updateButtonView(type);
   }
-
-  const buttonText = document.getElementById("copy-button-text");
-  const buttonIcon = document.getElementById("copy-button-icon");
-  buttonText.innerText = "copied";
-  buttonIcon.innerText = "check_circle";
-  
-  setTimeout(() => {
-    buttonText.innerText = "markdown style";
-    buttonIcon.innerText = "content_copy";
-  }, 3000);
 };
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -73,6 +77,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
   // add EventLister to copy button
-  const button = document.getElementById("copy-button");
-  button.addEventListener("click", () => handleClick("markdown"));
+  const plaintextButton = document.getElementById("copy-button-plaintext");
+  plaintextButton.addEventListener("click", () => handleClick("plaintext"));
+  const markdownButton = document.getElementById("copy-button-markdown");
+  markdownButton.addEventListener("click", () => handleClick("markdown"));
 });
